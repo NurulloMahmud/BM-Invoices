@@ -13,19 +13,26 @@
 
 
 .btn-primary {
-    background-color: #5DABDF;
-    margin-top: 20px;
-    margin-left: 20px;
-    border: 1px #5DABDF solid;
+    background-color: #8B4513;
+    border: 1px #8B4513 solid;
+}
+
+.btn-primary btn-lg {
+    align-self: left;
 }
 
 
+.btn-primary:hover {
+    background-color: #A0522D;
+    border: 1px #351B0E solid;
+}
+
 .navbar a:hover {
-    color: #0d6efd !important;
+    color: #8B4513!important;
 }
 
 body {
-    background-color: #D2E7F4;
+    background-color: #EEEEE4;
 }
 
 tbody, td, tfoot, th, thead, tr {
@@ -36,7 +43,33 @@ tbody, td, tfoot, th, thead, tr {
 margin-top: 450px;
 }
 
+.navopener {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
 
 .navbar {
     background-color: transparent !important; 
+}
+
+
+center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.broker_search {
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-width: 250px;
+    width: 100%;
+
+}
+
+.search_field {
+    display:flex;
+    
 }
