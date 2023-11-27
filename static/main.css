@@ -1,0 +1,42 @@
+.container {
+    margin-left: auto;
+}
+
+.container.offcanvas-open {
+    margin-left: 270px;
+    transition: margin-left 0.9s ease ;
+}
+
+.offcanvas {
+    max-width: 250px;
+}
+
+
+.btn-primary {
+    background-color: #5DABDF;
+    margin-top: 20px;
+    margin-left: 20px;
+    border: 1px #5DABDF solid;
+}
+
+
+.navbar a:hover {
+    color: #0d6efd !important;
+}
+
+body {
+    background-color: #D2E7F4;
+}
+
+tbody, td, tfoot, th, thead, tr {
+    background-color: transparent !important;
+}
+
+.bottomnav {
+margin-top: 450px;
+}
+
+
+.navbar {
+    background-color: transparent !important; 
+}
