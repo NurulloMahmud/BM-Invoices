@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Brokers
+{% endblock title %}
+
+
+{% block content %}
+  <div class="container">
+    <br>
+    <center>
+        <a href="{% url 'brokers:create-broker' %}">
+            <button type="submit" class="btn btn-primary btn-lg">
+                Add New Broker
+            </button>
+        </a>
+    </center>
+
+    <table class="table table-hover">
+        <br>
+        <thead>
+            <th>Name</th>
+            <th>Postal</th>
+            <th>State</th>
+            <th>Status</th>
+            <th>MC Number</th>
+            <th>City</th>
+            <th>Phone Number</th>
+        </thead>
+        <tbody>
+            {% for broker in brokers %}
+            <tr>
+                <td>{{ broker.company }}</td>
+                <td>{{ broker.postal }}</td>
+                <td>{{ broker.state }}</td>
+                <td>{{ broker.status.name }}</td>
+                <td>{{ broker.mc_number }}</td>
+                <td>{{ broker.city }}</td>
+                <td>{{ broker.phone_number }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+{% endblock content %}
