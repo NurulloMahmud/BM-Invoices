@@ -1,6 +1,7 @@
 from django.db import models
 from brokers.models import Broker
 from django.contrib.auth.models import User
+from datetime import date
 
 
 
@@ -21,10 +22,24 @@ class Invoice(models.Model):
     status = models.ForeignKey(Status, on_delete=models.SET_NULL, null=True, blank=True)
     comment = models.CharField(max_length=255)
     last_update = models.DateField()
+    invoiced_date = models.DateField(null=True, blank=True)
+    paid_date = models.DateField(null=True, blank=True)
     days_since_invoiced = models.IntegerField(null=True, blank=True)
 
     def __str__(self) -> str:
         return str(self.invoice_number)
+    
+    def save(self, *args, **kwargs):
+        # Calculate days_since_invoiced
+        if self.paid_date and self.invoiced_date:
+            self.days_since_invoiced = (self.paid_date - self.invoiced_date).days
+        else:
+            # Calculate days_since_invoiced based on today's date
+            today = date.today()
+            self.days_since_invoiced = (today - self.invoiced_date).days if self.invoiced_date else None
+
+        # Call the original save method to perform the actual save
+        super(Invoice, self).save(*args, **kwargs)
 
 
 class InvoiceChange(models.Model):

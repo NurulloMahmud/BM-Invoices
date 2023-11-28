@@ -4,6 +4,7 @@ from invoices.models import Invoice
 from django.views import View
 from brokers.models import Broker
 from invoices.models import Status
+from django.shortcuts import get_object_or_404
 
 
 
@@ -50,3 +51,10 @@ class InvoiceCreateView(View):
         )
 
         return redirect('invoices:invoices-list')
+
+
+# class InvoiceChangeView(View):
+#     def get(self, request, pk):
+#         invoice_instance = get_object_or_404(Invoice, pk=pk)
+
+        
