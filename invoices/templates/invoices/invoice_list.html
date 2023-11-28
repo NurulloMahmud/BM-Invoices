@@ -22,6 +22,8 @@
             </thead>
             <tbody>
                 {% for invoice in invoices %}
+                <tr>
+
                     <td>
                         {{ invoice.invoice_number }}
                     </td>
@@ -52,7 +54,8 @@
                     <td>
                         {{ invoice.days_since_invoiced }}
                     </td>
-                {% endfor %}
+                    {% endfor %}
+                </tr>
             </tbody>
         </table>
         

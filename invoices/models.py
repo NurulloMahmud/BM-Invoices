@@ -20,7 +20,7 @@ class Invoice(models.Model):
     status = models.ForeignKey(Status, on_delete=models.SET_NULL, null=True, blank=True)
     comment = models.CharField(max_length=255)
     last_update = models.DateField()
-    days_since_invoiced = models.IntegerField()
+    days_since_invoiced = models.IntegerField(null=True, blank=True)
 
     def __str__(self) -> str:
-        return self.invoice_number
+        return str(self.invoice_number)
