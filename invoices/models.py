@@ -1,5 +1,6 @@
 from django.db import models
 from brokers.models import Broker
+from django.contrib.auth.models import User
 
 
 
@@ -24,3 +25,11 @@ class Invoice(models.Model):
 
     def __str__(self) -> str:
         return str(self.invoice_number)
+
+
+class InvoiceChange(models.Model):
+    field = models.CharField(max_length=100)
+    old = models.CharField(max_length=100)
+    new = models.CharField(max_length=100)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
