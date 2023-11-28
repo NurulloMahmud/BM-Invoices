@@ -7,6 +7,20 @@
 {% block content %}
     <div class="container">
 
+        <center>
+            <a href="{% url 'invoices:create-invoice' %}">
+                <button type="submit" class="btn btn-primary">
+                    Add New Invoice
+                </button>
+            </a>
+            
+            <!-- <div>
+                <input style="height: 155;" type="text" id="searchInput" placeholder="Search...">
+            </div> -->
+        </center>
+            
+        <br>
+
         <table class="table table-hover">
             <thead>
                 <th>Invoice</th>
