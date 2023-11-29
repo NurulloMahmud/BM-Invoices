@@ -44,7 +44,7 @@ class Invoice(models.Model):
         super(Invoice, self).save(*args, **kwargs)
 
 
-class InvoiceChange(models.Model):
+class InvoiceChangeHistory(models.Model):
     field = models.CharField(max_length=100)
     old = models.CharField(max_length=100)
     new = models.CharField(max_length=100)
