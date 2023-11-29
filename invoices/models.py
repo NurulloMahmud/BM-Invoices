@@ -33,7 +33,7 @@ class Invoice(models.Model):
         # Calculate days_since_invoiced
         if self.paid_date and self.invoiced_date:
             self.days_since_invoiced = (self.paid_date - self.invoiced_date).days
-        else:
+        elif self.invoiced_date:
             # Calculate days_since_invoiced based on today's date
             today = date.today()
             self.days_since_invoiced = (today - self.invoiced_date).days if self.invoiced_date else None
