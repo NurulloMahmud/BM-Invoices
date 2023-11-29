@@ -36,7 +36,9 @@ class Invoice(models.Model):
         elif self.invoiced_date:
             # Calculate days_since_invoiced based on today's date
             today = date.today()
-            self.days_since_invoiced = (today - self.invoiced_date).days if self.invoiced_date else None
+            self.days_since_invoiced = (today - self.invoiced_date).days
+        else:
+            self.days_since_invoiced = 0
 
         # Call the original save method to perform the actual save
         super(Invoice, self).save(*args, **kwargs)
