@@ -76,6 +76,6 @@ center {
 
 .invoice-items {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Creates a grid with 4 columns of equal width */
-    gap: 16px; /* Adds a gap of 16 pixels between grid items */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 16px;
   }

@@ -31,8 +31,8 @@
             </tbody>
         </table>
     {% endif %}
-
-        <h3>Invoice Details</h3><br>
+    <br>
+    <h3>Invoice Details</h3>
 <div class="invoice-items">
         <div class="form-floating mb-3">
             <label for="invoice_number"><b>Invoice Number</b></label><br>
@@ -50,6 +50,11 @@
         </div>
 
         <div class="form-floating mb-3">
+            <label for="amount"><b>Amount</b></label><br>
+            <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="{{ invoice.amount }}" value="{{ invoice.amount }}">
+        </div>
+
+        <div class="form-floating mb-3">
             <label for="pick_up"><b>Pick up</b></label><br>
             <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="{{ invoice.pick_up }}" value="{{ invoice.pick_up }}">
         </div>
@@ -57,11 +62,6 @@
         <div class="form-floating mb-3">
             <label for="delivery"><b>Delivery</b></label><br>
             <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="{{ invoice.delivery }}" value="{{ invoice.delivery }}">
-        </div>
-
-        <div class="form-floating mb-3">
-            <label for="amount"><b>Amount</b></label><br>
-            <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="{{ invoice.amount }}" value="{{ invoice.amount }}">
         </div>
 
         <div class="form-floating mb-3">
