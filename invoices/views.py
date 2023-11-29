@@ -17,10 +17,12 @@ class InvoiceCreateView(View):
     def get(self, request):
         statuses = Status.objects.all()
         brokers = Broker.objects.all()
+        broker_names = [broker.company for broker in brokers]
 
         context = {
             "brokers": brokers,
             "statuses": statuses,
+            'broker_names': broker_names
         }
 
         return render(request, 'invoices/create_invoice.html', context)
