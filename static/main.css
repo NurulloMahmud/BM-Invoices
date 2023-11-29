@@ -71,5 +71,5 @@ center {
 
 .search_field {
     display:flex;
-    
+    max-width: 500px;
 }

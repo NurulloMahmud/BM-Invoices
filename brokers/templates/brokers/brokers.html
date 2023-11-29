@@ -4,7 +4,6 @@
   Brokers
 {% endblock title %}
 
-
 {% block content %}
 
   <div class="container">
@@ -15,9 +14,9 @@
                 Add New Broker
             </button>
         </a>
-        <div class = "search_field">
-            <input type="text" class ="broker_search" placeholder="Enter broker name... ">
-            <button type="submit" class="btn btn-primary btn-lg">
+        <div class="search_field">
+            <input type="text" id="brokerSearchInput" class="broker_search" placeholder="Broker name or MC... " oninput="searchBrokers()">
+            <button type="submit" class="btn btn-primary btn-lg" onclick="searchBrokers()">
                 Search
             </button>
         </div>
@@ -34,19 +33,59 @@
             <th>City</th>
             <th>Phone Number</th>
         </thead>
-        <tbody>
-            {% for broker in brokers %}
-            <tr>
-                <td>{{ broker.company }}</td>
-                <td>{{ broker.postal }}</td>
-                <td>{{ broker.state }}</td>
-                <td>{{ broker.status.name }}</td>
-                <td>{{ broker.mc_number }}</td>
-                <td>{{ broker.city }}</td>
-                <td>{{ broker.phone_number }}</td>
-            </tr>
-            {% endfor %}
+        <tbody id="brokerTableBody">
+            {% if brokers %}
+                {% for broker in brokers %}
+                <tr>
+                    <td>{{ broker.company }}</td>
+                    <td>{{ broker.postal }}</td>
+                    <td>{{ broker.state }}</td>
+                    <td>{{ broker.status.name }}</td>
+                    <td>{{ broker.mc_number }}</td>
+                    <td>{{ broker.city }}</td>
+                    <td>{{ broker.phone_number }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr id="noResultsRow">
+                    <td colspan="7" style="text-align: center;">Nothing found</td>
+                </tr>
+            {% endif %}
         </tbody>
     </table>
   </div>
+
+  <script>
+    function searchBrokers() {
+        var input, filter, table, tr, tdName, tdMC, i, txtValueName, txtValueMC, found;
+        input = document.getElementById("brokerSearchInput");
+        filter = input.value.toUpperCase();
+        table = document.querySelector(".table");
+        tr = table.getElementsByTagName("tr");
+
+        found = false; 
+
+        for (i = 1; i < tr.length; i++) {  
+            tdName = tr[i].getElementsByTagName("td")[0];  
+            tdMC = tr[i].getElementsByTagName("td")[4];  
+            if (tdName && tdMC) {
+                txtValueName = tdName.textContent || tdName.innerText;
+                txtValueMC = tdMC.textContent || tdMC.innerText;
+                if (txtValueName.toUpperCase().indexOf(filter) > -1 || txtValueMC.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                    found = true; 
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+
+        
+        var noResultsRow = document.getElementById("noResultsRow");
+        if (noResultsRow) {
+            noResultsRow.style.display = found ? "none" : "";
+        }
+    }
+  </script>
+
 {% endblock content %}
