@@ -122,7 +122,9 @@ class InvoiceDetailView(View):
     def get(self, request, pk):
         invoice_instance = get_object_or_404(Invoice, pk=pk)
 
-        history = InvoiceChangeHistory.objects.filter(invoice=invoice_instance)
+        print(invoice_instance.pk)
+        history = InvoiceChangeHistory.objects.filter(invoice=invoice_instance).all()
+        # print(history.field)
 
         context = {
             "invoice": invoice_instance,

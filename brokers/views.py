@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from brokers.models import Status, Broker
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 
 
 class BrokerCreateView(View):
