@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Comment
+{% endblock title %}
+
+{% block content %}
+  
+<div class="container">
+    <br>
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="comment" name="comment" placeholder="Invoice number" value="{{ comment }}" required>
+            <label for="floatingInput">{{ comment }}</label>
+        </div>
+        <br>
+
+        <center>
+            <button type="submit" class="btn btn-success">
+                Update
+            </button>
+        </center>
+
+    </form>
+</div>
+
+{% endblock content %}

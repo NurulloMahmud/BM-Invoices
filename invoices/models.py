@@ -50,3 +50,5 @@ class InvoiceChangeHistory(models.Model):
     new = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    

@@ -92,3 +92,27 @@ class InvoiceStatusChangeView(View):
             return redirect(previous_url)
         except:
             return redirect('invoices:invoices-list')       
+
+
+class InvoiceCommentView(View):
+    def get(self, request, pk):
+        invoice_instance = get_object_or_404(Invoice, pk=pk)
+        return render(request, 'invoices/add_comment.html', {"comment": invoice_instance.comment})
+    
+    def post(self, request, pk):
+        invoice_instance = get_object_or_404(Invoice, pk=pk)
+        comment = request.POST.get('comment')
+        old_comment = invoice_instance.comment
+        invoice_instance.comment=comment
+        invoice_instance.save()
+
+        # record comment change in history model
+        InvoiceChangeHistory.objects.create(
+            field='Comment',
+            old=old_comment,
+            new=invoice_instance.comment,
+            user=request.user,
+            invoice=invoice_instance,
+        )
+
+        return redirect('invoices:invoices-list')
