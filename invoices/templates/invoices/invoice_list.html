@@ -57,16 +57,35 @@
                         {{ invoice.amount }}
                     </td>
                     <td>
-                        {{ invoice.status }}
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-info">{{ invoice.status }}</button>
+                            <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                              <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="{% url 'invoices:edit-status' pk=invoice.pk status='Good to invoice' %}">Good to invoice</a></li>
+                              <li><a class="dropdown-item" href="{% url 'invoices:edit-status' pk=invoice.pk status='Invoiced' %}">Invoiced</a></li>
+                              <li><a class="dropdown-item" href="{% url 'invoices:edit-status' pk=invoice.pk status='Check mailed' %}">Check mailed</a></li>
+                              <li><a class="dropdown-item" href="{% url 'invoices:edit-status' pk=invoice.pk status='Chargeback' %}">Chargeback</a></li>
+                              <li><a class="dropdown-item" href="{% url 'invoices:edit-status' pk=invoice.pk status='Shortpay' %}">Shortpay</a></li>
+                              <li><a class="dropdown-item" href="{% url 'invoices:edit-status' pk=invoice.pk status='Paid' %}">Paid</a></li>
+                              <li><a class="dropdown-item" href="{% url 'invoices:edit-status' pk=invoice.pk status='Missing paperwork' %}">Missing paperwork</a></li>
+                            </ul>
+                          </div>
                     </td>
                     <td>
-                        {{ invoice.comment }}
+                        <a class="navbar-brand" href="{% url 'invoices:comment' pk=invoice.pk %}">{{ invoice.comment }}</a>
                     </td>
                     <td>
                         {{ invoice.last_update }}
                     </td>
                     <td>
                         {{ invoice.days_since_invoiced }}
+                    </td>
+                    <td>
+                        <button class="btn btn-info">
+                            <a class="dropdown-item" href="{% url 'invoices:invoice-detail' pk=invoice.pk %}">view</a></li>
+                        </button>
                     </td>
                     {% endfor %}
                 </tr>

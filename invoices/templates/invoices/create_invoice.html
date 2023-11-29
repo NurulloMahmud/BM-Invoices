@@ -16,11 +16,12 @@
 
         <div class="form-floating">
             <input type="number" class="form-control" id="reference" name="reference" placeholder="Reference" required>
-            <label for="floatingPassword">Reference</label>
+            <label for="floatingInput">Reference</label>
         </div>
         <br>
+
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="broker" name="broker" placeholder="Broker" required>
+            <input type="text" class="form-control" id="broker" name="broker" required>
             <label for="floatingInput">Broker</label>
         </div>
 
@@ -40,13 +41,6 @@
             <input type="number" class="form-control" id="amount" name="amount" placeholder="Amount" required>
             <label for="floatingInput">Amount</label>
         </div>
-
-        <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="selected_status" required>
-            <option value="Missing paperwork" selected>Select status</option>
-            {% for status in statuses %}
-            <option value="{{ status }}"> {{ status.name }} </option>
-            {% endfor %}
-        </select>
 
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="comment" name="comment" placeholder="Amount" required>

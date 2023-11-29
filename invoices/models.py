@@ -44,9 +44,11 @@ class Invoice(models.Model):
         super(Invoice, self).save(*args, **kwargs)
 
 
-class InvoiceChange(models.Model):
+class InvoiceChangeHistory(models.Model):
     field = models.CharField(max_length=100)
     old = models.CharField(max_length=100)
     new = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    
