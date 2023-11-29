@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Invoice history
+{% endblock title %}
+
+{% block conetent %}
+<div class="container">
+    
+    
+    {% if history %}
+    <center>
+        <h3>Change History</h3> <br>
+        <table class="table table-hover">
+            <thead>
+                <th>Field</th>
+                <th>Old</th>
+                <th>New</th>
+                <th>Author</th>
+                <th>Date</th>
+            </thead>
+            <tbody>
+                {% for activity in history %}
+                    <tr>
+                        <td>{{ activity.field }}</td>
+                        <td>{{ activity.old }}</td>
+                        <td>{{ activity.new }}</td>
+                        <td>{{ activity.user }}</td>
+                        <td>{{ activity.date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+        <h3>Invoice Details</h3><br>
+
+        <div class="form-floating mb-3">
+            <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="{{ invoice.invoice_number }}" value="{{ invoice.invoice_number }}">
+            <label for="floatingPlaintextInput">Invoice Number</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="{{ invoice.invoice_number }}" value="{{ invoice.invoice_number }}">
+            <label for="floatingPlaintextInput">Invoice Number</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="{{ invoice.invoice_number }}" value="{{ invoice.invoice_number }}">
+            <label for="floatingPlaintextInput">Invoice Number</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="{{ invoice.invoice_number }}" value="{{ invoice.invoice_number }}">
+            <label for="floatingPlaintextInput">Invoice Number</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="{{ invoice.invoice_number }}" value="{{ invoice.invoice_number }}">
+            <label for="floatingPlaintextInput">Invoice Number</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="{{ invoice.invoice_number }}" value="{{ invoice.invoice_number }}">
+            <label for="floatingPlaintextInput">Invoice Number</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="{{ invoice.invoice_number }}" value="{{ invoice.invoice_number }}">
+            <label for="floatingPlaintextInput">Invoice Number</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="{{ invoice.invoice_number }}" value="{{ invoice.invoice_number }}">
+            <label for="floatingPlaintextInput">Invoice Number</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="{{ invoice.invoice_number }}" value="{{ invoice.invoice_number }}">
+            <label for="floatingPlaintextInput">Invoice Number</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="{{ invoice.invoice_number }}" value="{{ invoice.invoice_number }}">
+            <label for="floatingPlaintextInput">Invoice Number</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="{{ invoice.invoice_number }}" value="{{ invoice.invoice_number }}">
+            <label for="floatingPlaintextInput">Invoice Number</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="{{ invoice.invoice_number }}" value="{{ invoice.invoice_number }}">
+            <label for="floatingPlaintextInput">Invoice Number</label>
+        </div>
+
+    </center>
+    
+</div>
+{% endblock conetent %}

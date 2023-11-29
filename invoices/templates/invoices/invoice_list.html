@@ -84,7 +84,7 @@
                     </td>
                     <td>
                         <button class="btn btn-info">
-                            <a class="dropdown-item" href="{% url 'invoices:edit-status' pk=invoice.pk status='Missing paperwork' %}">view</a></li>
+                            <a class="dropdown-item" href="{% url 'invoices:invoice-detail' pk=invoice.pk %}">view</a></li>
                         </button>
                     </td>
                     {% endfor %}

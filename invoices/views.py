@@ -116,3 +116,18 @@ class InvoiceCommentView(View):
         )
 
         return redirect('invoices:invoices-list')
+    
+
+class InvoiceDetailView(View):
+    def get(self, request, pk):
+        invoice_instance = get_object_or_404(Invoice, pk=pk)
+
+        history = InvoiceChangeHistory.objects.filter(invoice=invoice_instance)
+
+        context = {
+            "invoice": invoice_instance,
+            "history": history,
+        }
+
+        return render(request, 'invoices/invoice_detail.html', context)
+    
