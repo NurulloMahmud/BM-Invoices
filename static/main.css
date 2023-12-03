@@ -54,11 +54,11 @@ margin-top: 450px;
 }
 
 
-center {
+/* .center {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} */
 
 .broker_search {
     border-radius: 10px;

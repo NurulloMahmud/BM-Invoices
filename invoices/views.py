@@ -6,6 +6,7 @@ from brokers.models import Broker
 from invoices.models import Status
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
+from django.http import JsonResponse
 
 
 
@@ -130,4 +131,42 @@ class InvoiceDetailView(View):
         }
 
         return render(request, 'invoices/invoice_detail.html', context)
+
+
+class GetBrokerForInvoice(View):
+    def get(self, request):
+        query = request.GET.get('broker', '')
+        options = Broker.objects.filter(company__icontains=query)
+        result = [option.company for option in options]
+        return JsonResponse(result, safe=False)
+
+
+class InvoiceCreateView(View):
+    def get(self, request):
+        return render(request, 'invoices/create_invoice.html')
     
+    def post(self, request):
+        invoice_number = request.POST.get('invoice_number')
+        reference = request.POST.get('reference')
+        broker = request.POST.get('broker')
+        pick_up = request.POST.get('pick_up')
+        delivery = request.POST.get('delivery')
+        amount = request.POST.get('amount')
+        comment = request.POST.get('comment')
+
+        broker = Broker.objects.get(company=broker)
+        status = Status.objects.get(name='Missing paperwork')
+
+        Invoice.objects.create(
+            invoice_number=invoice_number,
+            reference=reference,
+            broker=broker,
+            pick_up=pick_up,
+            delivery=delivery,
+            amount=amount,
+            comment=comment,
+            status=status,
+            last_update=timezone.now().date(),
+        )
+
+        return redirect('invoices:invoices-list')
